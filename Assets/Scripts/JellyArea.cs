@@ -1,14 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JellyArea : MonoBehaviour
 {
+    [SerializeField] private TextMeshPro textBox;
+
+    private void Start()
+    {
+        textBox.enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("YOU HAVE ENTERED THE JELLY");
 
         GetComponent<Renderer>().material.color = Color.red;
+
+        //other.transform.position = new Vector3(0, 1, 0);
+
+        // Restart the scene!
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        textBox.enabled = true;
     }
 
     private void OnTriggerStay(Collider other)
