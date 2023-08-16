@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     // How high the player can jump
     private float jumpHeight = 2f;
 
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip jumpSoundEffect;
+
     private void Start()
     {
         // If the variable "controller" is empty...
@@ -59,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+
+            // Play the JUMP sound effect
+            playerAudioSource.PlayOneShot(jumpSoundEffect);
         }
 
         // Rotate the player based off those mouse values we collected earlier

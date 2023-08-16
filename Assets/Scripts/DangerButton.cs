@@ -9,10 +9,13 @@ public class DangerButton : MonoBehaviour
     // allow them to press the button!
 
     [SerializeField] private TextMeshPro buttonWarningText;
+    [SerializeField] private TextMeshPro gameOverText;
     [SerializeField] private bool isPlayerCharacterNextToButton = false;
 
     [SerializeField] private GameObject fallingJellyPrefab;
     [SerializeField] private Transform spawnPoint;
+
+    [SerializeField] private List<GameObject> spawnedJellies = new List<GameObject>();
 
     private void Update()
     {
@@ -25,6 +28,9 @@ public class DangerButton : MonoBehaviour
             GameObject newJelly = Instantiate(fallingJellyPrefab, spawnPoint.position, Random.rotation);
 
             newJelly.GetComponent<Rigidbody>().AddForce(Vector3.up * 800f);
+            newJelly.GetComponent<JellyArea>().textBox = gameOverText;
+
+            spawnedJellies.Add(newJelly);
         }
     }
 

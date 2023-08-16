@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class JellyArea : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro textBox;
+    public TextMeshPro textBox;
 
     private void Start()
     {
-        textBox.enabled = false;
+        if(textBox != null)
+        {
+            Debug.Log("I have disabled the text box. Lots of love, from yours truly, " + gameObject.name);
+            textBox.enabled = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

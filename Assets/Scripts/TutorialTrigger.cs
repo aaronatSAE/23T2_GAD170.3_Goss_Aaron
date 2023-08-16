@@ -10,6 +10,8 @@ public class TutorialTrigger : MonoBehaviour
 
     [SerializeField] private TextMeshPro tutorialText;
 
+    [SerializeField] private GameObject[] arrayOfTextObjects;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("TRIGGER has been TRIGGERED!");
@@ -19,6 +21,11 @@ public class TutorialTrigger : MonoBehaviour
         {
             // ...show the tutorial text!
             tutorialText.enabled = true;
+
+            for (int i = 0; i < 1000; i++)
+            {
+                Debug.Log("HELLO THIS IS THE NUMBER: " + i);
+            }
         }
     }
 }
