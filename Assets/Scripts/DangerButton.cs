@@ -32,6 +32,21 @@ public class DangerButton : MonoBehaviour
 
             spawnedJellies.Add(newJelly);
         }
+
+        if (Input.GetKey(KeyCode.X))
+        {
+            DestroyAllJellies();
+        }
+    }
+
+    private void DestroyAllJellies()
+    {
+        for (int i = 0; i < spawnedJellies.Count; i++)
+        {
+            //spawnedJellies[i].name = "I AM A JELLY";
+            Destroy(spawnedJellies[i].gameObject);
+        }
+        spawnedJellies.Clear();
     }
 
     private void OnTriggerEnter(Collider other)
